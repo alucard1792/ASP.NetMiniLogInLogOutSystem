@@ -1,0 +1,86 @@
+﻿@model MVCLogin.Models.Customer
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        #divlogin {
+            position: absolute;
+            left: 40%;
+            top: 40%;
+            border: 1px solid #ccc;
+            padding: 10px 10px;
+        }
+
+        #Name-error, #Description-error {
+            color: red;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="divlogin">
+        @using (Html.BeginForm("Autherize", "Login", FormMethod.Post))
+        {
+
+            <table>
+                <tr>
+                    <td></td>
+                    <td style="text-decoration:underline;">App name</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(Model => Model.Name)
+                    </td>
+                    <td>
+                        @Html.EditorFor(Model => Model.Name)
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        @Html.ValidationMessageFor(Model => Model.Name)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(Model => Model.Description)
+                    </td>
+                    <td>
+                        @Html.EditorFor(Model => Model.Description)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="error">@Html.DisplayFor(Model => Model.LoginErrorMessage)</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" name="name" value="Login" /></td>
+                </tr>
+
+            </table>
+
+        }
+    </div>
+
+    <!--Scripts para validar del lado del cliente y la siguiente anotacion: [Required(ErrorMessage = "Not empty for password")]-->
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,25 @@
+﻿@model MVCLogin.Models.Customer
+
+@{
+    Layout = null;
+    if (Session["Id"] == null) //validamos si el arreglo session en su propiedad Id es null para validar el login.....
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h1>Dashboard</h1>
+        <h2>user name: @Session["Name"].ToString()</h2><!--mostrar valores del arreglo Session toca convertirlos a ToString()-->
+        <a href="@Url.Action("LogOut", "Login")">Log out</a>
+    </div>
+</body>
+</html>
